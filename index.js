@@ -19,6 +19,8 @@ let calendarDay = document.querySelector(".calendar-day");
 calendarDay.innerHTML = "";
 let calendarWeek = document.querySelector(".calendar-week");
 calendarWeek.innerHTML = "";
+let calendarYear = document.querySelector(".calendar-year");
+calendarYear.innerHTML = year;
 let calendarMonth = document.querySelector(".calendar-month");
 calendarMonth.innerHTML = month;
 
@@ -26,23 +28,48 @@ for(let i = 0; i < 7; i++){
     calendarWeek.innerHTML += `<li>${weekArr[i]}</li>`;
 }
 
-function drawCalendar (month){
-    if(days31.includes(month.toString())){
+function drawCalendar (newSetDate){
+    let newSetMonth = `${newSetDate.getMonth()+1}`;
+
+    if(days31.includes(newSetMonth)){
         for(let i = 1; i < 32; i++){
-            calendarDay.innerHTML += `<li>${i}</li>`;
+            calendarDay.innerHTML += `<li id="date">${i}</li>`;
         }
-    } else if (days30.includes(month.toString())){
+    } else if (days30.includes(newSetMonth)){
         for(let i = 1; i < 31; i++){
-            calendarDay.innerHTML += `<li>${i}</li>`;
+            calendarDay.innerHTML += `<li id="date">${i}</li>`;
         }
-    } else if (days28.includes(month.toString())){
+    } else if (days28.includes(newSetMonth)){
         for(let i = 1; i < 29; i++){
-            calendarDay.innerHTML += `<li>${i}</li>`;
+            calendarDay.innerHTML += `<li id="date">${i}</li>`;
         }
     }
+
+    for(let i=0; i < newSetDate.getDay(); i++){
+        const createListElement = document.createElement('li');
+        calendarDay.prepend(createListElement);
+    }
+
+    document.querySelectorAll('#date').forEach(function(dateElement){
+        dateElement.addEventListener('click',function(){
+            let clickedDay = parseInt(this.innerHTML);
+            todayDate.innerHTML = clickedDay;
+            todayWeek.innerHTML = weekArr[newSetDate.getDay()];
+        });
+    });
 }
 
-drawCalendar(month);
+drawCalendar(nowDate);
+
+function setClickedCalendar(){
+    calendarMonth.innerHTML = month;
+    calendarYear.innerHTML = year;
+    let setDate = new Date(`${year}-${month}-1`);
+    drawCalendar(setDate);
+
+    todayDate.innerHTML = '1';
+    todayWeek.innerHTML = weekArr[setDate.getDay()];
+};
 
 document.getElementById('prev').addEventListener('click',
     function (){
@@ -52,11 +79,9 @@ document.getElementById('prev').addEventListener('click',
             month = '13';
         }
         month -= 1;
-        calendarMonth.innerHTML = month;
-        drawCalendar(month);
-        console.log(year);    
+        setClickedCalendar();
     }
-)
+);
 
 document.getElementById('next').addEventListener('click',
     function (){
@@ -66,10 +91,6 @@ document.getElementById('next').addEventListener('click',
             month = 0;
         }
         month += 1;
-        calendarMonth.innerHTML = month;
-        drawCalendar(month);
-        console.log(year);    
+        setClickedCalendar();
     }
-)
-
-console.log(month);
+);
