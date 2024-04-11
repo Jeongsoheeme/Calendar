@@ -1,0 +1,77 @@
+body {
+  background-image: url("./images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Varela Round", sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  font-size: 72px;
+}
+
+.calendar-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  gap: 10px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.calendar-box ul {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-box h2 {
+  margin-bottom: 20px;
+}
+
+.today-box {
+  gap: 10px;
+}
+
+.calendar-wrap > ul {
+  width: 350px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar-wrap > ul > li {
+  width: 50px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.button-wrap {
+  position: absolute;
+  display: flex;
+  width: 480px;
+  justify-content: space-between;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+}

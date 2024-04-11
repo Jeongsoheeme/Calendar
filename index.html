@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Calendar Project</title>
+  </head>
+
+  <body>
+    <section>
+      <div class="image-box">
+        <img src="images/vanilla_coding_logo.png" />
+      </div>
+      <h1>Calendar</h1>
+
+      <!-- 달력 Start -->
+      <div class="calendar-box">
+        <ul class="today-box">
+          <li><span id="todayDate"></span>일</li>
+          <li><span id="todayWeek"></span>요일</li>
+        </ul>
+      </div>
+
+      <div class="calendar-box">
+        <h2><span class="calendar-month"></span> 월</h2>
+        <div class="calendar-wrap">
+          <ul class="calendar-week">
+          </ul>
+          <ul class="calendar-day">
+          </ul>
+        </div>
+        <div class="button-wrap">
+          <button id="prev"> &lt;</button>
+          <button id="next"> &gt;</button>
+        </div>
+      </div>
+      <!-- 달력 End -->
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>
